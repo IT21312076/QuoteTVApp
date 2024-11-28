@@ -1,24 +1,30 @@
-//
-//  ContentView.swift
-//  QuoteTVApp
-//
-//  Created by Anuththara Divarathna on 2024-11-27.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            MotivationView()
+                .tabItem {
+                    Label("Motivation", systemImage: "star.fill")
+                }
+            
+            MoodView()
+                .tabItem {
+                    Label("Mood", systemImage: "face.smiling")
+                }
+            
+            OtherQuotesView()
+                .tabItem {
+                    Label("Others", systemImage: "quote.bubble")
+                }
         }
-        .padding()
+        .accentColor(.purple) // Accent color for the tab items
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .previewDevice("Apple TV 4K")
+    }
 }
